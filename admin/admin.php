@@ -1,3 +1,4 @@
+
 <?php
 //admin page
 
@@ -6,7 +7,13 @@ if(count($_SESSION)>0 && ($_SESSION['role'])< 2){
 	header('location: ../index.php');
 	die();
 }
-
+?>
+<form method="POST">
+	<label for="cat_name">Create a new category:<label>
+	<input name="cat_name" type="text" />
+	<button type="submit">Create</button>
+<form>
+<?php
 //create category
 if(count($_POST)>0){
 	require_once('adminFunctions.php');
@@ -20,6 +27,7 @@ if(count($_POST)>0){
 //view all categories
 $result=$connection->query('SELECT * FROM categories');
 echo '<table>';
+echo '<caption> All Categories';
 while($category=$result->fetch()){
 	echo '<tr>
 		<td>'.$category['cat_ID'].'</td>
@@ -32,8 +40,4 @@ echo '</table>';
 
 ?>
 <a href="../index.php">Index<a><br />
-<form method="POST">
-	<label for="cat_name">Create a new category:<label>
-	<input name="cat_name" type="text" /> <br />
-	<button type="submit">Create</button>
-<form>
+

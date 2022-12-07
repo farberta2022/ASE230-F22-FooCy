@@ -16,7 +16,7 @@ require_once('theme/header.php');
   </div>
   <h1> This is the index page </h1>
   <?php
-      if ($_SESSION['role']==2) {
+  if(isset($_SESSION['role']) && ($_SESSION['role']==2)){
         echo '<a href="admin/admin.php">Admin page<a><br />';
     }
     ?>
@@ -28,4 +28,10 @@ require_once('theme/header.php');
     <!-- <?=$_SESSION['user_ID']?><br />
     <?=$_SESSION['firstname']?><br />
     <?=$_SESSION['role']?> -->
+    <?php
+    /*if(isset($_SESSION['role']) && $_SESSION['role']){
+      echo '<a href="user/userEditProfile.php">Edit Your profile!<a><br />';
+    }
+    */
+    ?>
 </div>
