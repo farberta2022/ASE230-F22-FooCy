@@ -17,7 +17,7 @@ if(count($_SESSION)>0 && is_numeric($_SESSION['user_ID'])){
             require_once('auth.php');
             if(signin($connection,$_POST['email'],$_POST['password'])){
                 header('location: ../index.php');
-                die();
+                die($_SESSION['message']="Thank you for signing in");
             }else echo 'Signin failed';
         }
         ?>
@@ -25,7 +25,7 @@ if(count($_SESSION)>0 && is_numeric($_SESSION['user_ID'])){
         <form method="POST">
             <input name="email" type="email" placeholder="email" />
             <input name="password" type="password" placeholder="password" />
-            <button type="submit">Sign in</button>	
+            <button type="submit">Sign in</button>
         </form>
     </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 05:16 AM
+-- Generation Time: Nov 18, 2022 at 10:39 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -50,17 +50,6 @@ CREATE TABLE `categories` (
   `cat_ID` int(10) UNSIGNED NOT NULL,
   `cat_name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`cat_ID`, `cat_name`) VALUES
-(1, 'Household goods'),
-(2, 'Technology'),
-(3, 'Art'),
-(4, 'Art supply'),
-(5, 'Hand-crafted goods');
 
 -- --------------------------------------------------------
 
@@ -113,21 +102,8 @@ CREATE TABLE `products` (
   `quantOnHand` smallint(5) UNSIGNED NOT NULL,
   `prod_price` decimal(10,2) UNSIGNED NOT NULL,
   `prod_cost` decimal(15,4) UNSIGNED NOT NULL,
-  `user_ID` int(10) UNSIGNED NOT NULL,
-  `date_prod_added` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_prod_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`prod_ID`, `cat_ID`, `prod_name`, `prod_desc`, `prod_imgs`, `quantOnHand`, `prod_price`, `prod_cost`, `user_ID`, `date_prod_added`) VALUES
-(1, 1, 'microfiber cloths', '5 microfiber cleaning cloths', 'null', 15, '3.00', '0.5000', 0, '2022-12-07 02:30:59'),
-(2, 2, 'rulers', 'ruler with standard and metric units', 'null', 6, '0.50', '0.0200', 0, '2022-12-07 03:25:40'),
-(3, 4, 'ThingFor A Thing', 'For the person who has everything', 'null', 2, '89.00', '0.5000', 0, '2022-12-07 03:31:38'),
-(4, 2, 'MoarStuff Animals', 'Just like the name, our stuffed animals have MOAR stuff', 'null', 100, '25.00', '1.0000', 0, '2022-12-07 03:49:42'),
-(5, 1, 'headphones', 'really good headphones', 'null', 4, '125.00', '65.0000', 2, '2022-12-07 03:53:53'),
-(6, 1, 'pens', '10 pack of Gel pens (black)', 'null', 400, '6.99', '0.3300', 2, '2022-12-07 03:57:36');
 
 -- --------------------------------------------------------
 
@@ -148,14 +124,6 @@ CREATE TABLE `users` (
   `date_account_created` datetime NOT NULL,
   `birthday` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_ID`, `role`, `firstname`, `lastname`, `email`, `password`, `phone_number`, `picture`, `bio`, `date_account_created`, `birthday`) VALUES
-(1, 0, 'Tami', 'Farber', 'farbert1@nku.edu', '$2y$10$btgwYlvlIAtoH0Vm9klFKelWNsP8cH2Q8k3zj9xCSpnY7J5Mi3PZm', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
-(2, 1, 'T.S.', 'Farber', 't.s.farber09@gmail.com', '$2y$10$xbOTpZwGa/w9VOD47ZYXxePNTyKXHnwWL7FILXkYlmuHEFhV8pY82', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -197,8 +165,7 @@ ALTER TABLE `paymethods`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`prod_ID`),
-  ADD KEY `cat_ID` (`cat_ID`),
-  ADD KEY `user_ID` (`user_ID`);
+  ADD KEY `cat_ID` (`cat_ID`);
 
 --
 -- Indexes for table `users`
@@ -220,7 +187,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cat_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -238,13 +205,13 @@ ALTER TABLE `paymethods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `prod_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
