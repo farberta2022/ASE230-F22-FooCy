@@ -15,6 +15,11 @@ require_once('theme/header.php');
      <hr />
   </div>
   <h1> This is the index page </h1>
+  <?php
+      if ($_SESSION['role']==2) {
+        echo '<a href="admin/admin.php">Admin page<a><br />';
+    }
+    ?>
     <a href="interface/signupLanding.php">Sign Up!<a><br />
     <a href="libs/signin.php">Sign In!<a><br />
     <a href="libs/signout.php">Sign Out!<a><br />
