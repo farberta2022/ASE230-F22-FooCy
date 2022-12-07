@@ -1,6 +1,6 @@
 <?php
 
-//create.php
+//auth.php
 require_once('../settings.php');
 
 
@@ -16,8 +16,8 @@ function signupSeller($connection,$email,$password, $firstname, $lastname){
 	$query=$connection->prepare('SELECT * FROM users WHERE email=?');
 	$query->execute([$email]);
 	if($query->rowCount()>0) return false;
-	$query=$connection->prepare('INSERT INTO users(email,password, firstname, lastname, role) VALUES(?,?,?,?,?)');
-	$query->execute([$email,password_hash($password,PASSWORD_DEFAULT), $firstname, $lastname, 1]);
+	$query=$connection->prepare('INSERT INTO users(email,password, firstname, lastname, role, date_account_created) VALUES(?,?,?,?,?,?)');
+	$query->execute([$email,password_hash($password,PASSWORD_DEFAULT), $firstname, $lastname, 1, date("Y-m-d H:i:s")]);
 	return true;
 }
 
