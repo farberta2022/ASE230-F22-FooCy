@@ -1,7 +1,7 @@
 <?php
     require_once('../settings.php');
 
-    function addItem($connection,$cat_ID,$prod_name,$prod_desc,$prod_imgs,$quantOnHand,$prod_price,$prod_cost,$user_ID){
+    function addItem($connection,$cat_ID,$prod_name,$prod_desc='',$prod_imgs=NULL,$quantOnHand,$prod_price,$prod_cost,$user_ID){
         $query=$connection->prepare('SELECT * FROM categories WHERE cat_ID=?');
         $query->execute([$cat_ID]);
         if($query->rowCount()<1) {
@@ -50,6 +50,9 @@
       $result=$query->fetch();
     	if($user_ID != $result['user_ID']) return false;
       return true;
+    }
+
+    
     }
 
 // $_SESSION['user_ID']=$result['user_ID'];

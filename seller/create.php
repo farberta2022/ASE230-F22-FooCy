@@ -1,7 +1,7 @@
 <?php
-  session_start();
   require_once('../settings.php');
-  $role = $_SESSION['role'];
+  if(isset($_SESSION['role'])) $role = $_SESSION['role'];
+
 
 
   // check if the users role gives them seller's privileges

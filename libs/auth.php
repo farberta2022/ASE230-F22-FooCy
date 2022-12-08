@@ -37,4 +37,6 @@ function signin($connection,$email,$password){
 function signout(){
 	$_SESSION=[];
 	session_destroy();
+	session_start();
+
 }

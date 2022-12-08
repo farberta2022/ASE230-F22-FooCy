@@ -26,14 +26,14 @@ require_once('../theme/header.php');
   <?php
     $listResult = viewItems($connection,$user_ID);
     if($listResult != false){
-      echo $listResult['prod_ID'].'<br />';
-      echo $listResult['cat_ID'].'<br />';
-      echo $listResult['prod_name'].'<br />';
-      echo $listResult['quantOnHand'].'<br />';
-      echo $listResult['prod_price'].'<br />';
-      echo $listResult['prod_cost'].'<br />';
-      echo $listResult['prod_desc'].'<br />';
-      echo $listResult['prod_imgs'].'<br />';
+      echo $listResult['prod_ID'].' -- ';
+      echo $listResult['cat_ID'].' -- ';
+      echo $listResult['prod_name'].' -- ';
+      echo $listResult['quantOnHand'].' -- ';
+      echo $listResult['prod_price'].' -- ';
+      echo $listResult['prod_cost'].' -- ';
+      echo $listResult['prod_desc'].' -- ';
+      echo $listResult['prod_imgs'].' -- ';
       echo $listResult['date_prod_added'].'<br />';
     } else {
       header('location: ../index.php');
