@@ -15,6 +15,14 @@
         return true;
     }
 
+    function getCategory($connection,$cat_ID){
+      $query=$connection->prepare('SELECT * FROM categories WHERE cat_ID=?');
+      $query->execute([$cat_ID]);
+      $result=$query->fetch();
+      $_SESSION['cat_name']=$result['cat_name'];
+      return true;
+    }
+    // not currently in use
     function viewItems($connection,$user_ID){
       $query=$connection->prepare('SELECT * FROM products WHERE user_ID=?');
       $query->execute([$user_ID]);
@@ -24,7 +32,7 @@
         return false;
       return true;
     }
-
+    // not currently in use
     function updateItem($connection,$prod_ID,$user_ID){
         $query=$connection->prepare('SELECT * FROM products WHERE prod_ID=?');
         $query->execute([$prod_ID]);
@@ -43,7 +51,7 @@
         $_SESSION['message']="Product added";
         return true;
     }
-
+    // not currently in use
     function verifyUser($prod_ID,$user_ID){
       $query=$connection->prepare('SELECT * FROM products WHERE prod_ID=?');
     	$query->execute([$prod_ID]);
@@ -52,7 +60,7 @@
       return true;
     }
 
-    
+
     }
 
 // $_SESSION['user_ID']=$result['user_ID'];

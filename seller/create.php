@@ -22,7 +22,7 @@
       if(count($_POST)>0){
           require_once('products.php');
           if(addItem($connection,$_POST['cat_ID'],$_POST['prod_name'],$_POST['prod_desc'],$_POST['prod_img'],$_POST['qoh'],$_POST['prod_price'],$_POST['prod_cost'],$_SESSION['user_ID'])){
-            header('location: ../index.php');
+            header('location: index.php');
           } else {
             echo 'Product not added';
         }
