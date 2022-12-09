@@ -27,7 +27,7 @@ if(count($_POST)>0){
 //view all categories
 $result=$connection->query('SELECT * FROM categories');
 echo '<table>';
-echo '<caption> All Categories';
+echo '<caption> All Categories</caption>';
 while($category=$result->fetch()){
 	echo '<tr>
 		<td>'.$category['cat_ID'].'</td>

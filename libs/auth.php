@@ -8,8 +8,8 @@ function signupUser($connection,$email,$password, $firstname, $lastname){
 	$query=$connection->prepare('SELECT * FROM users WHERE email=?');
 	$query->execute([$email]);
 	if($query->rowCount()>0) return false;
-	$query=$connection->prepare('INSERT INTO users(email,password, firstname, lastname) VALUES(?,?,?,?)');
-	$query->execute([$email,password_hash($password,PASSWORD_DEFAULT), $firstname, $lastname]);
+	$query=$connection->prepare('INSERT INTO users(email,password, firstname, lastname, date_account_created) VALUES(?,?,?,?,?)');
+	$query->execute([$email,password_hash($password,PASSWORD_DEFAULT), $firstname, $lastname,date("Y-m-d H:i:s")]);
 	return true;
 }
 function signupSeller($connection,$email,$password, $firstname, $lastname){

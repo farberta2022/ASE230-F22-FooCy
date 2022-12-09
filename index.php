@@ -22,6 +22,9 @@ require_once('theme/header.php');
     if (isset($_SESSION['role']) && $_SESSION['role']==1) {
       echo '<a href="seller/seller.php">Seller dashboard<a><br />';
     }
+    if (isset($_SESSION['role']) && $_SESSION['role']>=0) {
+      echo '<a href="user/userEditProfile.php">Edit profile<a><br />';
+    }
 
   ?>
   <a href="interface/signupLanding.php">Sign Up!<a><br />
