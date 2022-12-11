@@ -10,4 +10,6 @@ $result=$connection->query('SELECT * FROM products WHERE cat_ID='.$_GET['id'].''
        </tr>';
      }
      echo '</table>';
-     
+?>
+
+<a href="../index.php">Index<a><br />

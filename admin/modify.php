@@ -15,6 +15,7 @@ $query=$connection->prepare('SELECT * FROM categories WHERE cat_ID=?');
 $query->execute([$_GET['id']]);
 $category=$query->fetch();
 ?> 
+
 <form method="POST">
 Category name: <input name="cat_name" type="text" value="<?= $category['cat_name'] ?>" />
 <button type="submit">Submit</button>
