@@ -16,6 +16,14 @@ require_once('theme/header.php');
   </div> <!-- end of div class:notify -->
   <h1> This is the index page </h1>
   <?php
+     $result=$connection->query('SELECT * FROM categories');
+     echo '<table>';
+     while($category=$result->fetch()){
+       echo '<tr>
+         <td><a href="interface/categoryDetail.php?id='.$category['cat_ID'].'">'.$category['cat_name'].'</a></td>
+       </tr>';
+     }
+     echo '</table>';
     if (isset($_SESSION['role']) && $_SESSION['role']==2) {
       echo '<a href="admin/admin.php">Admin page<a><br />';
     }
@@ -26,6 +34,8 @@ require_once('theme/header.php');
       echo '<a href="user/userEditProfile.php">Edit profile<a><br />';
     }
 
+
+   
   ?>
   <a href="interface/signupLanding.php">Sign Up!<a><br />
   <a href="libs/signin.php">Sign In!<a><br />
