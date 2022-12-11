@@ -23,6 +23,7 @@ if(count($_POST)>0){
 	else {
 		echo "Creation Falied";
 	}
+	
 }
 //view all categories
 $result=$connection->query('SELECT * FROM categories');

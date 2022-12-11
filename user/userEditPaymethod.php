@@ -10,7 +10,7 @@ if(count($_POST)>0){
 $query=$connection->prepare('INSERT INTO paymethods(nameOnAccount, pm_type,acct_num,exp_date,user_ID, adr_ID) VALUES (?,?,?,?,?,?) ');
 $query->execute([$_POST['nameOnAccount'],$_POST['pm_type'],$_POST['acct_num'],$_POST['exp_date'],$_SESSION['user_ID'],$user['adr_ID']]);
 header('location: ../index.php');
-}
+} 
 ?>
 
 <h1>Hello <?= $user['firstname'] ?></h1>
@@ -25,3 +25,4 @@ header('location: ../index.php');
 	<input name="exp_date" type="text"/><br />
 	<button type="submit">Submit</button>
 <form>
+

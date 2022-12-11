@@ -14,8 +14,9 @@ function AdminCreateCat($connection, $categoryName){
     $query->execute([$categoryName]);
     $_SESSION['message']="Category Added.";
     return true;
+    
 }
-function AdminDelteCat($connection, $catgegoryID){
+function AdminDelteCat($connection, $catgegoryID){ 
     $query=$connection->prepare('DELETE FROM categories WHERE cat_ID=?');
     $query->execute([$catgegoryID]);
 }

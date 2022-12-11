@@ -11,7 +11,7 @@ $query=$connection->prepare('INSERT INTO addresses(house_number,street,apt_numbe
 $query->execute([$_POST['house_number'],$_POST['street'],$_POST['apt_number'],$_POST['city'],$_POST['state'],$_POST['country'],$_POST['postal_code'],$_POST['special_instructions'],$_SESSION['user_ID']]);
 header('location: ../index.php');
 }
-?>
+?> 
 
 <h1>Hello <?= $user['firstname'] ?></h1>
 <form method="POST">

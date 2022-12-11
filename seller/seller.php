@@ -42,6 +42,7 @@ require_once('../theme/header.php');
     </nav>
     <br />
     <br />
+    
 
   <h2>List of products for <?=$sellerNm?></h2>
 	<br />

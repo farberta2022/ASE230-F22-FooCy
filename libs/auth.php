@@ -19,6 +19,7 @@ function signupSeller($connection,$email,$password, $firstname, $lastname){
 	$query=$connection->prepare('INSERT INTO users(email,password, firstname, lastname, role, date_account_created) VALUES(?,?,?,?,?,?)');
 	$query->execute([$email,password_hash($password,PASSWORD_DEFAULT), $firstname, $lastname, 1, date("Y-m-d H:i:s")]);
 	return true;
+	
 }
 
 function signin($connection,$email,$password){

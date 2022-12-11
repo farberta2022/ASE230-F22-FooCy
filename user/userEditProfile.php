@@ -92,7 +92,7 @@ if(!isset($user['nameOnAccount'],$user['pm_type'],$user['acct_num'],$user['exp_d
 	?>
 	<a href="userEditPaymethod.php">Edit payment method</a><br />
 	<?php
-	}
+	} 
 ?>
 
 <a href="../index.php">Index<a><br />

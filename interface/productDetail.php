@@ -21,6 +21,7 @@ $result=$connection->query('SELECT * FROM products WHERE prod_ID='.$_GET['id'].'
        </tr>';
      }
     echo '</table>';
+    
 ?>
     <a href="buyProduct.php">
         <button type="submit" >Buy Now!</button>

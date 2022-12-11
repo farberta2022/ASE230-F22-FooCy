@@ -4,6 +4,7 @@ require_once('../settings.php');
 if(count($_SESSION)>0 && is_numeric($_SESSION['user_ID'])){
 	header('location: ../index.php');
 	die();
+    
 }
 ?>
 <!DOCTYPE html>
