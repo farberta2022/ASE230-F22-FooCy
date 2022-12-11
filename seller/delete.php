@@ -1,11 +1,12 @@
 <?php
   require_once('../settings.php');
   if(isset($_SESSION['role'])) $role = $_SESSION['role'];
+  if(isset($_SESSION['message'])) unset($_SESSION['message']);
 
   // check if the users role gives them seller's privileges
   if($_SESSION['role']==0){
     header('location: ../index.php');
-  	die($_SESSION['message'] = "You are not authorized to delete products");
+  	die($_SESSION['message'] = "You are not authorized to edit products");
   }
   $seller = $_SESSION['user_ID'];
   require_once('../theme/header.php');
@@ -15,14 +16,12 @@
 <div class="container-fluid">
   <div class="notify">
     <?php
-    $choice = null;
-    $productNum = null;
-    $productName = null;
-    $productOnHand = null;
+      $choice = $productNum = $productName = $productOnHand = null;
+
       if(isset($_SESSION['role'])){
-        echo 'Welcome '.$_SESSION['firstname'].'<hr />';
-      }
-      // sets choice from the dropdown box
+          echo 'Welcome '.$_SESSION['firstname'].'<hr />';
+        }
+        // sets choice from the dropdown box
       if(isset($_POST['select'])){
         if(!empty($_POST['product'])) {
           $choice = $_POST['product'];
@@ -40,16 +39,16 @@
           echo 'Nothing selected';
         }
       }
-    // $_SESSION['message'] = $_POST['product'].'" and "'.$choice;
-    if(isset($_POST['confirm'])){
-      $choiceCNF = $_SESSION['product'];
-      $_SESSION['message'] = 'Product '.$choiceCNF.'deleted';
-      if(deleteProd($connection,$choiceCNF)){
-        header('location: seller.php');
-      } else {
-        $_SESSION['message'] = 'Product '.$choiceCNF.' not deleted';
+      // $_SESSION['message'] = $_POST['product'].'" and "'.$choice;
+      if(isset($_POST['confirm'])){
+        $choiceCNF = $_SESSION['product'];
+        $_SESSION['message'] = 'Product '.$choiceCNF.'deleted';
+        if(deleteProd($connection,$choiceCNF)){
+          header('location: seller.php');
+        } else {
+          $_SESSION['message'] = 'Product '.$choiceCNF.' not deleted';
+        }
       }
-    }
 
      ?>
   </div>
@@ -90,7 +89,7 @@
        <form method="POST">
          <table>
            <thead>
-             <h3>Is this is the product you want to delete?</h3>
+             <h3>Is this is the product you want to update?</h3>
            <tr>
              <th>Product number</th>
              <th>Product name</th>
