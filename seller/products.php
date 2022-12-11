@@ -14,14 +14,30 @@
         $_SESSION['message']="Product added";
         return true;
     }
+    function deleteProd($connection, $choice){
+        $query=$connection->prepare('DELETE FROM products WHERE prod_ID=?');
+        $query->execute([$choice]);
+        return true;
+    }
 
     function getCategory($connection,$cat_ID){
-      $query=$connection->prepare('SELECT * FROM categories WHERE cat_ID=?');
-      $query->execute([$cat_ID]);
-      $result=$query->fetch();
-      $_SESSION['cat_name']=$result['cat_name'];
-      return true;
+        $query=$connection->prepare('SELECT * FROM categories WHERE cat_ID=?');
+        $query->execute([$cat_ID]);
+        $result=$query->fetch();
+        $_SESSION['cat_name']=$result['cat_name'];
+        return true;
     }
+    function getProduct($connection,$prod_ID){
+        $query=$connection->prepare('SELECT * FROM products WHERE prod_ID=?');
+        $query->execute([$prod_ID]);
+        $result=$query->fetch();
+        $_SESSION['prod_ID']=$result['prod_ID'];
+        $_SESSION['prod_name']=$result['prod_name'];
+        $_SESSION['qoh']=$result['quantOnHand'];
+        return true;
+    }
+
+
     // not currently in use
     function viewItems($connection,$user_ID){
       $query=$connection->prepare('SELECT * FROM products WHERE user_ID=?');
