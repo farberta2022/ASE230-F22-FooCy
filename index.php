@@ -5,6 +5,30 @@ require_once('settings.php');
 require_once('theme/header.php');
 
 ?>
+
+<style>
+  .header {
+    padding: 20px;
+    text-align: center;
+    background: #A29F34;
+    color: white;
+    font-size: 30px;
+  }
+</style>
+
+<div class="header">
+  <h1>
+    <a href="index.php"><img src="logo.jpg" width="15%"></a>
+  </h1>
+</div>
+
+<br/>
+<h1 style="text-align:center">The creativity starts with you.</h1>
+<br/>
+
+<a href="interface/signupLanding.php"><button style="text-align:center">Sign Up!</button><a>
+<a href="libs/signin.php" style="text-align:center"><button style="text-align:center">Sign In!</button><a>
+
 <div class="container">
   <div class="notify">
     <?php
@@ -14,7 +38,7 @@ require_once('theme/header.php');
      ?>
      <hr />
   </div> <!-- end of div class:notify -->
-  <h1> This is the index page </h1>
+  
   <?php
      $result=$connection->query('SELECT * FROM categories');
      echo '<table>';
@@ -35,8 +59,8 @@ require_once('theme/header.php');
     }
    
   ?>
-  <a href="interface/signupLanding.php">Sign Up!<a><br />
-  <a href="libs/signin.php">Sign In!<a><br />
+  
+    <br />
   <a href="libs/signout.php">Sign Out!<a><br />
 
 </div> <!-- end of div class:container -->
