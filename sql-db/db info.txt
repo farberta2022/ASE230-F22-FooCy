@@ -1,0 +1,13 @@
+Be sure to use foocommerceCTS.sql to test our code.
+This database includes some categories, products, and user profiles.
+Following are the passwords:
+Role 0 user-shopper --
+	farbert1@nku.edu pw:789456 userID: 1
+Role 1 user-seller --
+	seller01@nku.edu pw:seller01 userID: 5
+	seller02@nku.edu pw:seller02 userID: 6
+Role 2 admin
+	admin3@nku.edu pw:admin3 userID: 4
+
+There may be a stray foocommercect.sql included when you view this. 
+The last one to push code to git may still have it in their folder.

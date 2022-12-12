@@ -6,7 +6,7 @@
   // check if the users role gives them seller's privileges
   if($_SESSION['role']==0){
     header('location: ../index.php');
-  	die($_SESSION['message'] = "You are not authorized to delete products");
+  	die($_SESSION['message'] = "You are not authorized to edit products");
   }
   $seller = $_SESSION['user_ID'];
   require_once('../theme/header.php');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 05:16 AM
+-- Generation Time: Dec 12, 2022 at 05:06 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -40,6 +40,15 @@ CREATE TABLE `addresses` (
   `special_instructions` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`adr_ID`, `user_ID`, `house_number`, `street`, `apt_number`, `city`, `state`, `country`, `postal_code`, `special_instructions`) VALUES
+(1, 1, '123', 'Doinitmy Way', '', 'Beverly Hills', 'CA', 'US', '90210', ''),
+(2, 5, '989', 'Moonlight Ridge Rd', '', 'Phoenix', 'AZ', 'US', '27345', ''),
+(3, 4, '291', 'W 44th St', '4B', 'Cincinnati', 'OH', 'US', '45251', 'Leave at front desk');
+
 -- --------------------------------------------------------
 
 --
@@ -60,7 +69,9 @@ INSERT INTO `categories` (`cat_ID`, `cat_name`) VALUES
 (2, 'Technology'),
 (3, 'Art'),
 (4, 'Art supply'),
-(5, 'Hand-crafted goods');
+(5, 'Hand-crafted goods'),
+(7, 'Clothing'),
+(8, 'Pet Supplies');
 
 -- --------------------------------------------------------
 
@@ -98,6 +109,15 @@ CREATE TABLE `paymethods` (
   `billMatchShip` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `paymethods`
+--
+
+INSERT INTO `paymethods` (`pm_ID`, `user_ID`, `nameOnAccount`, `pm_type`, `acct_num`, `exp_date`, `adr_ID`, `billMatchShip`) VALUES
+(1, 1, 'Tami S Farber', 0, '4179000000034', '0625', 1, NULL),
+(2, 5, 'Tawny Kitaen', 0, '446500000089', '0625', 2, NULL),
+(3, 4, 'Hubert Lloyd', 2, '741956400032', '0625', 3, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +147,23 @@ INSERT INTO `products` (`prod_ID`, `cat_ID`, `prod_name`, `prod_desc`, `prod_img
 (3, 4, 'ThingFor A Thing', 'For the person who has everything', 'null', 2, '89.00', '0.5000', 0, '2022-12-07 03:31:38'),
 (4, 2, 'MoarStuff Animals', 'Just like the name, our stuffed animals have MOAR stuff', 'null', 100, '25.00', '1.0000', 0, '2022-12-07 03:49:42'),
 (5, 1, 'headphones', 'really good headphones', 'null', 4, '125.00', '65.0000', 2, '2022-12-07 03:53:53'),
-(6, 1, 'pens', '10 pack of Gel pens (black)', 'null', 400, '6.99', '0.3300', 2, '2022-12-07 03:57:36');
+(6, 1, 'pens', '10 pack of Gel pens (black)', 'null', 400, '6.99', '0.3300', 2, '2022-12-07 03:57:36'),
+(7, 2, 'booky', 'a book', '', 2, '12.99', '4.0300', 2, '2022-12-07 19:21:41'),
+(8, 1, 'fidget spinner', 'spins when you want to fidget', '', 50, '2.00', '0.0200', 5, '2022-12-08 04:27:01'),
+(9, 1, 'Flippity-flyer', 'Toss it in the air and it falls with style', '', 60, '4.50', '0.3000', 5, '2022-12-08 05:02:10'),
+(10, 2, 'microfiber cloths', 'Set of 10 microfiber cloths. 6\" x 8\"', '', 12, '12.99', '3.5000', 5, '2022-12-08 05:06:22'),
+(12, 3, 'Great Dane Sculpture', 'Resin-cast sculpture 9 x 18', '', 1, '800.00', '550.0000', 5, '2022-12-10 17:01:22'),
+(15, 2, 'Keyboard', 'Goes clickity-clackity. Removeable keys. WASD and 10-key included', '', 64, '20.99', '5.0000', 5, '2022-12-10 18:00:14'),
+(16, 7, 'Fuzzy Fluffy Fleece Footies', 'Your feet will thank you. We have 5 colors to choose from and sizes for all\r\n', '', 100, '25.87', '10.0000', 6, '2022-12-11 02:32:51'),
+(17, 7, 'LoTR t-shirt', 'Black: Mordor Fun Run', '', 45, '12.80', '2.0000', 6, '2022-12-11 02:33:22'),
+(18, 7, 'Felt shoulder bag', 'wool felt handbag with vegan leather trim\r\n', '', 16, '74.45', '20.0000', 6, '2022-12-11 02:33:51'),
+(20, 8, 'Custom: Pet ornaments', 'Your pet\'s name engraved on a hand-painted woodcut ornament\r\n', '', 1, '16.99', '5.0000', 6, '2022-12-11 02:35:09'),
+(22, 8, 'Custom: Personalized Dog Collar', 'Twill with copper accents.  See size chart for how to measure dog.', '', 1, '9.99', '3.0000', 6, '2022-12-11 02:37:01'),
+(23, 8, 'Firehose Dog Toy', 'Heavy-duty fabric made from upcycled firehoses. For determined chewers and fun-loving doggos\r\n', '', 55, '15.00', '5.0000', 6, '2022-12-11 02:38:58'),
+(24, 5, 'Widdle Hat', 'A hat for your cat. Crocheted with lurv', '', 3, '150.00', '149.9900', 5, '2022-12-12 03:20:58'),
+(25, 5, 'Widdle Sweater', 'This sweater should keep your iguana from falling out of a tree on those freezing desert nights. Crocheted with lurv!', '', 15, '85.00', '68.0000', 5, '2022-12-12 03:23:54'),
+(26, 8, 'Custom: Pet Photo Pillowcase King size', 'Send us a picture of your pet and we will print their image on a pillowcase. All the hugs, less fur, easy to travel with', '', 1, '16.50', '7.5000', 6, '2022-12-12 03:28:20'),
+(27, 8, 'Custom: Pet Photo Pillowcase Queen size sham', 'Send us a picture of your pet and we will print their image on a pillowcase. All the hugs, less fur, easy to travel with', '', 1, '25.00', '20.0000', 6, '2022-12-12 03:29:26');
 
 -- --------------------------------------------------------
 
@@ -154,8 +190,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `role`, `firstname`, `lastname`, `email`, `password`, `phone_number`, `picture`, `bio`, `date_account_created`, `birthday`) VALUES
-(1, 0, 'Tami', 'Farber', 'farbert1@nku.edu', '$2y$10$btgwYlvlIAtoH0Vm9klFKelWNsP8cH2Q8k3zj9xCSpnY7J5Mi3PZm', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
-(2, 1, 'T.S.', 'Farber', 't.s.farber09@gmail.com', '$2y$10$xbOTpZwGa/w9VOD47ZYXxePNTyKXHnwWL7FILXkYlmuHEFhV8pY82', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL);
+(1, 0, 'Tami', 'Farber', 'farbert1@nku.edu', '$2y$10$btgwYlvlIAtoH0Vm9klFKelWNsP8cH2Q8k3zj9xCSpnY7J5Mi3PZm', '', '', 'Got my mind on my doggies and my doggies on my mind.', '0000-00-00 00:00:00', '1971-06-14'),
+(2, 1, 'T.S.', 'Farber', 't.s.farber09@gmail.com', '$2y$10$xbOTpZwGa/w9VOD47ZYXxePNTyKXHnwWL7FILXkYlmuHEFhV8pY82', NULL, NULL, NULL, '0000-00-00 00:00:00', NULL),
+(4, 2, 'admin', 'three', 'admin3@nku.edu', '$2y$10$CUnVoI69Rizelx15kY8a3.DrplId6XURRrFfk/CNWk8vyIdaM5K6O', '', '', '', '2022-12-08 03:57:20', '1955-07-21'),
+(5, 1, 'SellerOfStuff', 'One', 'seller01@nku.edu', '$2y$10$ZROXRBEvM51e.YpVQcW7yeEXFXMER2hTbonAiwoKMWhdfHwTX5QLq', '', '', 'I used to model for Whitesnake videos, now I crochet hats for turtles and sweaters for iguanas. No snakes though. They find clothes constricting.', '2022-12-08 04:09:55', '1961-08-05'),
+(6, 1, 'Ida', 'Seller', 'seller02@nku.edu', '$2y$10$6ZJ5BDrET.Kr339MfklJze6RxeV9DAEE.yPw4dvZyt8Zlp1jSUF8S', NULL, NULL, NULL, '2022-12-11 03:31:22', NULL);
 
 --
 -- Indexes for dumped tables
@@ -214,13 +253,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `adr_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `adr_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cat_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -232,19 +271,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `paymethods`
 --
 ALTER TABLE `paymethods`
-  MODIFY `pm_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `pm_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `prod_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
