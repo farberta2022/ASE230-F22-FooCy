@@ -25,7 +25,8 @@ if(count($_POST)>0){
 }
 
 
-$query=$connection->prepare('SELECT * FROM users INNER JOIN addresses ON users.user_ID = addresses.user_ID INNER JOIN paymethods ON users.user_ID = paymethods.user_ID WHERE users.user_ID=?');
+$query=$connection->prepare('SELECT * FROM users INNER JOIN addresses ON users.user_ID = addresses.user_ID INNER JOIN paymethods ON users.user_ID = paymethods.user_ID
+ WHERE users.user_ID=?');
 $query->execute([$_SESSION['user_ID']]);
 $user=$query->fetch();
 ?>
